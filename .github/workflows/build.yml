@@ -20,7 +20,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'  # ajusta según tu versión
+          dotnet-version: '6.0.x'  # ajusta según tu versión
 
       - name: Install SonarScanner for .NET
         run: dotnet tool install --global dotnet-sonarscanner
