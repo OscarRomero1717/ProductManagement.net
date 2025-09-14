@@ -1,0 +1,35 @@
+name: Build and analyze
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    name: Build and analyze on SonarCloud
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Recomendado para un análisis completo
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'  # ajusta según tu versión
+
+      - name: Install SonarScanner for .NET
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Start SonarCloud analysis
+        run: dotnet sonarscanner begin /k:"ProductManagement.net" /o:"<OscarRomero1717>" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+      - name: Build solution
+        run: dotnet build --no-incremental
+
+      - name: End SonarCloud analysis
+        run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
