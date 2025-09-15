@@ -56,12 +56,12 @@ namespace ProductManagement.Infrastructure.Repositories
             }
             catch (SqlException ex)
             {
-                _logger.LogError(ex, "Error de SQL al recuperar todos los productos");
-                throw new ApplicationException("Se produjo un error en la base de datos al recuperar productos", ex);
+                _logger.LogError(ex, "Error de SQL al recuperar   producto");
+                throw new ApplicationException("Se produjo un error en la base de datos al recuperar producto", ex);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al recuperar todos los productos");
+                _logger.LogError(ex, "Error al recuperar  producto");
                 throw;
             }
 
@@ -84,12 +84,12 @@ namespace ProductManagement.Infrastructure.Repositories
             }
             catch (SqlException ex)
             {
-                _logger.LogError(ex, "Error de SQL al recuperar todos los productos");
-                throw new ApplicationException("Se produjo un error en la base de datos al recuperar productos", ex);
+                _logger.LogError(ex, "Error de SQL al eliminar  producto");
+                throw new ApplicationException("Se produjo un error en la base de datos al eliminar producto", ex);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al recuperar todos los productos");
+                _logger.LogError(ex, "Error al elimianr   producto");
                 throw;
             }
         }
@@ -120,13 +120,13 @@ namespace ProductManagement.Infrastructure.Repositories
             }
             catch (SqlException ex)
             {
-                _logger.LogError(ex, "Error de SQL al actualizar el producto");
+                _logger.LogError(ex, "Error de SQL al crear el producto");
                 return false;
                 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al actualizar el producto");
+                _logger.LogError(ex, "Error al crear el producto");
                 return false;
             }
         }
@@ -183,12 +183,12 @@ namespace ProductManagement.Infrastructure.Repositories
             }
             catch (SqlException ex)
             {
-                _logger.LogError(ex, "Error de SQL al recuperar todos los productos");
-                throw new ApplicationException("Se produjo un error en la base de datos al recuperar productos", ex);
+                _logger.LogError(ex, "Error de SQL al recuperar   producto por Id");
+                throw new ApplicationException("Se produjo un error en la base de datos al  producto por Id", ex);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al recuperar todos los productos");
+                _logger.LogError(ex, "Error al recuperar  producto por Id");
                 throw;
             }
         }

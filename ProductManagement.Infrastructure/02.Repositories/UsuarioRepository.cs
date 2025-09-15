@@ -2,13 +2,8 @@
 using Dapper;
 using Microsoft.Extensions.Logging;
 using ProductManagement.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalog.Infrastructure._02.Repositories
 {
@@ -30,7 +25,7 @@ namespace Catalog.Infrastructure._02.Repositories
             {
                 using var connection = _dbConnectionFactory.CreateConnection();
 
-                var result = await connection.QueryFirstOrDefaultAsync<Usuario>("spUsuarios_BuscarPorCredenciales", new { or_usuario = nombre, or_contrasena = password },
+                var result = await connection.QueryFirstOrDefaultAsync<Usuario>("or_obtener_usuario_por_usaurio_contrasena", new { or_usuario = nombre, or_contrasena = password },
                      commandType: CommandType.StoredProcedure);
                 return result;
             }

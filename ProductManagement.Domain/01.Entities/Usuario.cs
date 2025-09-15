@@ -20,6 +20,6 @@ namespace Catalog.Domain._01.Entities
 
         public string? or_token_actualizacion { get; set; }
 
-        public DateTime? or_token_actualizacion_expiracion { get; set; }
+        public DateTime? or_fecha_creacion { get; set; }
     }
 }
