@@ -51,17 +51,8 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(Assembly.Load("Catalog.EventHadlers"));
 });
 
+
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-
-var secretKey = jwtSettings["SecretKey"];
-if (string.IsNullOrEmpty(secretKey) )
-{
-    throw new InvalidOperationException("JWT Secret Key no está configurada correctamente");
-}
-
-
-
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     { 
