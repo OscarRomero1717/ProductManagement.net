@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Catalog", "02.Catalog", "{C1DA1548-FE6A-4A5C-A855-FEF10D37EA77}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Catalog", "01.Catalog", "{C1DA1548-FE6A-4A5C-A855-FEF10D37EA77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Api", "01.Api", "{B4F63BE0-4190-463B-84A9-647EEDF08B75}"
 EndProject
@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.EventHandlers", "02.Even
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.QueriesService", "ProductManagement.catalog.Queries\Catalog.QueriesService.csproj", "{2AE1816F-B6F5-469D-A5A7-050A5FBB2C6B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Common", "03.Common", "{F7ADEA42-10E9-4516-A2AA-1EE308D98193}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Common", "02.Common", "{F7ADEA42-10E9-4516-A2AA-1EE308D98193}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagement.Common.Collection", "ProductManagement.Common.Collection\ProductManagement.Common.Collection.csproj", "{00F6C9B8-4AD0-41C3-8409-5B039216E982}"
 EndProject
