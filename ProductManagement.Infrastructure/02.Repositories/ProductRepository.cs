@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 namespace ProductManagement.Infrastructure.Repositories
 {
 
-
     public class ProductRepository : IProductRepository
     {
 
