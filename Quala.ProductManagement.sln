@@ -41,7 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.EventHadlers", "Cat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Mappings", "04.Mappings", "{B09F99D9-EDEE-4CDB-9A4F-C602E4B550F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Aplication.Mapping", "Catalog.Aplication.Mapping\Catalog.Aplication.Mapping.csproj", "{66D6F3BF-CA3D-4833-B943-03A813661990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Aplication.Mapping", "Catalog.Aplication.Mapping\Catalog.Aplication.Mapping.csproj", "{66D6F3BF-CA3D-4833-B943-03A813661990}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.Test", "05.Test", "{65A54358-7C69-4745-8F92-293E225BC0A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Quala.ProductManagement.API.Test", "Catalog.Quala.ProductManagement.API.Test\Catalog.Quala.ProductManagement.API.Test.csproj", "{F07A1A50-1C88-4D51-A440-35F240F04522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +93,10 @@ Global
 		{66D6F3BF-CA3D-4833-B943-03A813661990}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D6F3BF-CA3D-4833-B943-03A813661990}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D6F3BF-CA3D-4833-B943-03A813661990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07A1A50-1C88-4D51-A440-35F240F04522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07A1A50-1C88-4D51-A440-35F240F04522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07A1A50-1C88-4D51-A440-35F240F04522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07A1A50-1C88-4D51-A440-35F240F04522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +120,8 @@ Global
 		{3810178D-814F-4AFF-B1DD-4D4DE6697808} = {C24D6CE8-A6F4-4946-800F-F6C82646AF68}
 		{B09F99D9-EDEE-4CDB-9A4F-C602E4B550F9} = {16449E0C-A95D-442E-AC17-DE79DE3DAE58}
 		{66D6F3BF-CA3D-4833-B943-03A813661990} = {B09F99D9-EDEE-4CDB-9A4F-C602E4B550F9}
+		{65A54358-7C69-4745-8F92-293E225BC0A6} = {C1DA1548-FE6A-4A5C-A855-FEF10D37EA77}
+		{F07A1A50-1C88-4D51-A440-35F240F04522} = {65A54358-7C69-4745-8F92-293E225BC0A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {188B8AFA-38C1-4240-B89B-24306E0EAD5A}

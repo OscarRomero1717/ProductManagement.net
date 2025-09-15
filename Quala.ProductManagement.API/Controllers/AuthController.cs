@@ -31,14 +31,6 @@ namespace Quala.ProductManagement.API.Controllers
             {
                 try
                 {
-                    if (!ModelState.IsValid)
-                    {
-                        _logger.LogWarning("Login con modelo no valido ");
-                        return BadRequest(ModelState);
-                    }
-
-
-
                     var result = await _authService.AuthenticateAsync(request.Username, request.Password);
 
                     if (!result.IsAuthenticated)
