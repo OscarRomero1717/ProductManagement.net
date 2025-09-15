@@ -24,13 +24,13 @@ namespace Catalog.Infrastructure._02.Repositories
             _dbConnectionFactory = dbConnectionFactory;
             _logger = logger;
         }
-        public async Task<Usuario> GetUsuarioByNombrePassword(string usuario, string password)
+        public async Task<Usuario> GetUsuarioByNombrePassword(string nombre, string password)
         {
             try
             {
                 using var connection = _dbConnectionFactory.CreateConnection();
 
-                var result = await connection.QueryFirstOrDefaultAsync<Usuario>("spUsuarios_BuscarPorCredenciales", new { or_usuario = usuario, or_contrasena = password },
+                var result = await connection.QueryFirstOrDefaultAsync<Usuario>("spUsuarios_BuscarPorCredenciales", new { or_usuario = nombre, or_contrasena = password },
                      commandType: CommandType.StoredProcedure);
                 return result;
             }

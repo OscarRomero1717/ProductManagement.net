@@ -1,9 +1,7 @@
-﻿using AutoMapper;
-using Catalog.Aplication.Mapping;
+﻿using Catalog.Aplication.Mapping;
 using Catalog.QueriesService;
 using Microsoft.Extensions.DependencyInjection;
 using ProductManagement.catalog.Queries;
-using System.Reflection;
 
 namespace Catalog.AplicationDI
 {
@@ -18,23 +16,7 @@ namespace Catalog.AplicationDI
             // Registrar servicios de aplicación
             services.AddScoped<IProductQueryService, ProductQueryService>();            
             services.AddScoped<IAuthService, AuthService>();
-         
-           // services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
-            //services.AddSingleton<IMapper>(sp =>
-            //{
-            //    var config = new MapperConfiguration(cfg =>
-            //    {
-            //        cfg.AddProfile<ProductoProfile>();
-            //        // Agrega otros perfiles aquí
-            //    });
-            //    return config.CreateMapper();
-            //});
-
-
-
-
-
+            services.AddScoped<ITokenJWT, TokenJWT>();   
             return services;
         }
     }

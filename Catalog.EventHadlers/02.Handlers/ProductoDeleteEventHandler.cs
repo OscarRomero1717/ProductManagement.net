@@ -1,22 +1,24 @@
-﻿using AutoMapper;
-using Catalog.EventHadlers._01.Commands;
+﻿using Catalog.EventHadlers._01.Commands;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using ProductManagement.Infrastructure.Repositories;
+using System.Reflection;
 
 namespace Catalog.EventHadlers
 {
     public class ProductoDeleteEventHandler : IRequestHandler<ProductoDeleteCommand, bool>
     {
         private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
+        private readonly ILogger<ProductoDeleteEventHandler> _logger;
 
-        public ProductoDeleteEventHandler(IProductRepository productRepository, IMapper mapper)
+
+        public ProductoDeleteEventHandler(IProductRepository productRepository, ILogger<ProductoDeleteEventHandler> logger)
         {
             _productRepository = productRepository;
-            _mapper = mapper;
-        }
+            _logger= logger;
 
-       
+
+        }
 
         public async Task<bool> Handle(ProductoDeleteCommand request, CancellationToken cancellationToken)
         {
@@ -29,7 +31,7 @@ namespace Catalog.EventHadlers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError(ex, "Excepción no controlada en {Method}", MethodBase.GetCurrentMethod().Name);
                 return await Task.FromResult(false);
             }
         }

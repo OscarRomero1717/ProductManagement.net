@@ -1,11 +1,9 @@
 ﻿using Catalog.Domain._01.Entities;
 using Catalog.Infrastructure._02.Repositories;
 using Catalog.QueriesService._01.Dto;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+using System.Reflection;
 
 namespace Catalog.QueriesService
 {
@@ -13,51 +11,44 @@ namespace Catalog.QueriesService
     {
         private readonly JwtSettings _jwtSettings;
         private readonly IUsuarioRepository _userRepository;
+        private readonly ILogger<AuthService> _logger;
+        private readonly ITokenJWT _tokenJWT;
 
-        public AuthService(IOptions<JwtSettings> jwtSettings, IUsuarioRepository userRepository)
+        public AuthService(IOptions<JwtSettings> jwtSettings, IUsuarioRepository userRepository, ILogger<AuthService> logger, ITokenJWT tokenJWT)
         {
             _jwtSettings = jwtSettings.Value;
             _userRepository = userRepository;
+            _logger = logger;
+            _tokenJWT = tokenJWT;
         }
 
         public async Task<AuthResultDto> AuthenticateAsync(string username, string password)
         {
-            var user = await _userRepository.GetUsuarioByNombrePassword(username,password);
 
-            if (user == null )
+            try
             {
-                return new AuthResultDto { IsAuthenticated = false, Message = "Credenciales Invalidas" };
-            }
+                var user = await _userRepository.GetUsuarioByNombrePassword(username, password);
 
-            var token = GenerateJwtToken(user);
-            return new AuthResultDto
-            {
-                IsAuthenticated = true,
-                Token = token,
-                ExpiresIn = _jwtSettings.ExpiryMinutes 
-            };
-        }
-
-        private string GenerateJwtToken(Usuario user)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtSettings.SecretKey);
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
+                if (user == null)
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.or_id_usuario.ToString()),
-                    new Claim(ClaimTypes.Name, user.or_nombre),                    
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
-                Issuer = _jwtSettings.Issuer,
-                Audience = _jwtSettings.Audience,
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
+                    return new AuthResultDto { IsAuthenticated = false, Message = "Credenciales Invalidas" };
+                }
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+                var token = _tokenJWT.GenerateToken(user);
+                return new AuthResultDto
+                {
+                    IsAuthenticated = true,
+                    Token = token,
+                    ExpiresIn = _jwtSettings.ExpiryMinutes
+                };
+            }
+            catch (Exception ex )
+            {
+                _logger.LogError(ex, "Excepción no controlada en {Method}", MethodBase.GetCurrentMethod().Name);
+                throw;
+
+            }
+            
         }
        
 

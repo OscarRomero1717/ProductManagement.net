@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using ProductManagement.Domain;
 using ProductManagement.Infrastructure.Repositories;
+using System.Reflection;
 
 namespace Catalog.EventHadlers
 {
@@ -9,11 +11,14 @@ namespace Catalog.EventHadlers
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<ProductoCreateEventHandler> _logger;
 
-        public ProductoCreateEventHandler(IProductRepository productRepository, IMapper mapper)
+
+        public ProductoCreateEventHandler(IProductRepository productRepository, IMapper mapper, ILogger<ProductoCreateEventHandler> logger)
         {
             _productRepository = productRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
        
@@ -30,8 +35,8 @@ namespace Catalog.EventHadlers
             }
             catch (Exception ex )
             {
-
-                return await Task.FromResult(false);
+                _logger.LogError(ex, "Excepción no controlada en {Method}", MethodBase.GetCurrentMethod().Name);
+                throw;
             }
         }
     }

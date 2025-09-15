@@ -30,7 +30,7 @@ namespace ProductManagement.catalog.Queries
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Excepción no controlada" + MethodBase.GetCurrentMethod().Name);
+                _logger.LogError(ex, "Excepción no controlada en {Method}", MethodBase.GetCurrentMethod().Name);
                 throw;
             }
            
@@ -45,7 +45,7 @@ namespace ProductManagement.catalog.Queries
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Excepción no controlada" + MethodBase.GetCurrentMethod().Name);
+                _logger.LogError(ex, "Excepción no controlada en {Method}", MethodBase.GetCurrentMethod().Name);
                 throw;
             }
            
